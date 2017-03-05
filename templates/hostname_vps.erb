@@ -1,0 +1,22 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides: hostname_vps
+# Required-Start:
+# Required-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: set hostname.
+# Description: VPS hostname setting script
+### END INIT INFO
+#
+# chkconfig: 2345 7 93
+# description: VPS hostname setting script
+#
+# /etc/init.d/hostname_vps
+#
+HOSTNAME=[<%= @hostname %>]
+[ -f /etc/hostname ] && echo $HOSTNAME > /etc/hostname
+[ -f /etc/HOSTNAME ] && echo $HOSTNAME > /etc/HOSTNAME
+[ -f /etc/mailname ] && echo $HOSTNAME > /etc/mailname
+/bin/hostname $HOSTNAME
+exit 0
